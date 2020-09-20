@@ -1,6 +1,5 @@
 import 'package:http/http.dart';
 import 'dart:convert';
-
 import '../models/cats.dart';
 
 Future<List<Cat>> getData(int pageIndex) async {
