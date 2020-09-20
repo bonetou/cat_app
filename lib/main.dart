@@ -1,5 +1,7 @@
+import 'package:cat_app/pages/favorites.dart';
 import 'package:cat_app/pages/homepage.dart';
 import 'package:flutter/material.dart';
+
 //import 'models/cats.dart';
 
 void main() {
@@ -16,6 +18,13 @@ class CatApp extends StatefulWidget {
 class _CatAppState extends State<CatApp> {
   @override
   Widget build(BuildContext context) {
-    return HomePage();
+    return MaterialApp(
+      title: 'Cat Breeds App',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => HomePage(),
+        '/favorites': (context) => Favorites(),
+      },
+    );
   }
 }
