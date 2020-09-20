@@ -5,8 +5,7 @@ import '../models/cats.dart';
 
 Future<List<Cat>> getData(int pageIndex) async {
   List<Cat> newCats = [];
-  final url = 'https://api.thecatapi.com/v1/breeds?page=$pageIndex&limit=5';
-  print(url);
+  final url = 'https://api.thecatapi.com/v1/breeds?page=$pageIndex&limit=10';
   final apikey = '084ba1e9-75a2-47d1-9bc0-4a773f8e18dc';
   Response response = await get(url, headers: {'x-api-key': apikey});
   Iterable l = json.decode(response.body);
@@ -16,8 +15,6 @@ Future<List<Cat>> getData(int pageIndex) async {
     cat.setImage(image);
     newCats.add(cat);
   });
-
-  print(newCats);
   return newCats;
 }
 

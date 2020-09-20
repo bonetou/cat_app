@@ -56,34 +56,48 @@ class BreedNameText extends StatelessWidget {
 
 class CatImage extends StatelessWidget {
   final imageUrl;
-  final double imageHeight = 250;
-  final double imageWidth = 310;
+  final double imageHeight = 250;  final double imageWidth = 350;
   const CatImage({this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(30),
-        child: Image.network(
-          imageUrl,
-          height: imageHeight,
-          width: imageWidth,
-          fit: BoxFit.fill,
-          loadingBuilder: (contex, child, progress) {
-            return progress == null
-                ? child
-                : Container(
-                    height: imageHeight,
-                    width: imageWidth,
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  );
-          },
+      child: Stack(children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(30),
+          child: Image.network(
+            imageUrl,
+            height: imageHeight,
+            width: imageWidth,
+            fit: BoxFit.fill,
+            loadingBuilder: (context, child, progress) {
+              return progress == null
+                  ? child
+                  : Container(
+                      height: imageHeight,
+                      width: imageWidth,
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
+            },
+          ),
         ),
-      ),
+        new Positioned(
+          top: 15.0,
+          right: 20.5,
+          child: InkWell(
+            onTap: (){},
+            splashColor: Colors.black,
+            child: Icon(
+              Icons.favorite,
+              color: Colors.white,
+              size: 30.0,
+            ),
+          ),
+        ),
+      ]),
     );
   }
 }
